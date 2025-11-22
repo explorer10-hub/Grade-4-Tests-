@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Grade 4 Combined Test Portal</title>
+<style>
+body { margin: 0; font-family: Arial, sans-serif; background: #fafafa; }
+h1 { text-align: center; padding: 20px 0; }
+.tab { overflow: hidden; border-bottom: 2px solid #ccc; background-color: #f1f1f1; }
+.tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; transition: 0.3s; font-size: 17px; }
+.tab button:hover { background-color: #ddd; }
+.tab button.active { background-color: #ccc; }
+.tabcontent { display: none; padding: 20px; }
+#timer { font-size: 18px; font-weight: bold; color: red; margin-bottom: 10px; text-align: center; }
+.question { margin: 10px 0; padding: 10px; background: #f0f7ff; border-radius: 8px; }
+.question b { display: block; margin-bottom: 5px; }
+.options label { display: block; margin: 5px 0; padding: 5px; border-radius: 5px; cursor: pointer; }
+.correct { background-color: #c8f7c5; }
+.incorrect { background-color: #f7c5c5; }
+textarea { width: 100%; font-size: 16px; padding: 5px; border-radius: 5px; margin-top: 5px; }
+button.submitBtn { display: block; width: 100%; padding: 15px; background: #0066ff; color: white; border: none; border-radius: 8px; margin-top: 15px; font-size: 18px; cursor: pointer; }
+button.submitBtn:hover { background: #004ecc; }
+
+/* Art canvas tools */
+#artTools { margin-bottom:10px; }
+#artTools select, #artTools input[type=color], #artTools button { margin-right:5px; padding:5px; font-size: 14px; }
+
+/* Make canvas take most of the space */
+#artCanvas { border: 1px solid #000; background: #fff; display: block; touch-action: none; width: 100%; height: 70vh; }
+</style>
+</head>
+<body>
+
+<h1>Grade 4 – Combined Test Portal</h1>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Math')" id="defaultOpen">Mathematics</button>
+  <button class="tablinks" onclick="openTab(event, 'Science')">Science</button>
+  <button class="tablinks" onclick="openTab(event, 'English')">English</button>
+  <button class="tablinks" onclick="openTab(event, 'Geography')">Geography</button>
+  <button class="tablinks" onclick="openTab(event, 'Art')">Art</button>
+</div>
+
+<!-- ===== MATH ===== -->
+<div id="Math" class="tabcontent">
+  <div id="timerMath">Time Remaining: 120m 0s</div>
+  <form id="formMath">
+    <div id="mcqMath"></div>
+    <h2>Descriptive Questions</h2>
+    <div class="question"><b>Q51. 324 ÷ 36. Explain your steps.</b><textarea name="q51" rows="3"></textarea></div>
+    <div class="question"><b>Q52. Find the HCF (Highest Common Factor) of 18 and 24 and explain.</b><textarea name="q52" rows="3"></textarea></div>
+    <div class="question"><b>Q53. Simplify 3/5 + 2/15, explain your reasoning.</b><textarea name="q53" rows="3"></textarea></div>
+    <div class="question"><b>Q54. A rope of 9.6 m is cut into 8 equal parts. How long is each? Explain.</b><textarea name="q54" rows="3"></textarea></div>
+    <div class="question"><b>Q55. A square has side 12 cm. What is its perimeter? Explain.</b><textarea name="q55" rows="3"></textarea></div>
+    <button type="button" class="submitBtn" onclick="gradeTest('Math')">Submit Mathematics Test</button>
+  </form>
+  <div id="resultMath"></div>
+</div>
+
+<!-- ===== SCIENCE ===== -->
+<div id="Science" class="tabcontent">
+  <div id="timerScience">Time Remaining: 120m 0s</div>
+  <form id="formScience">
+    <div id="mcqScience"></div>
+    <h2>Descriptive Questions</h2>
+    <div class="question"><b>Q51. Explain why we see lightning before hearing thunder.</b><textarea name="q51" rows="3"></textarea></div>
+    <div class="question"><b>Q52. What happens to a plant if it does not get sunlight?</b><textarea name="q52" rows="3"></textarea></div>
+    <div class="question"><b>Q53. List three simple machines on a bicycle and their functions.</b><textarea name="q53" rows="3"></textarea></div>
+    <div class="question"><b>Q54. Describe the water cycle in your own words.</b><textarea name="q54" rows="3"></textarea></div>
+    <div class="question"><b>Q55. Explain the difference between rotation and revolution of Earth and their effects.</b><textarea name="q55" rows="3"></textarea></div>
+    <button type="button" class="submitBtn" onclick="gradeTest('Science')">Submit Science Test</button>
+  </form>
+  <div id="resultScience"></div>
+</div>
+
+<!-- ===== ENGLISH ===== -->
+<div id="English" class="tabcontent">
+  <div id="timerEnglish">Time Remaining: 120m 0s</div>
+  <form id="formEnglish">
+    <div id="mcqEnglish"></div>
+    <h2>Descriptive Questions</h2>
+    <div class="question"><b>Q51. Write about your favorite day at school (5–6 sentences).</b><textarea name="q51" rows="5"></textarea></div>
+    <div class="question"><b>Q52. Explain the difference between a noun and a pronoun with examples.</b><textarea name="q52" rows="3"></textarea></div>
+    <div class="question"><b>Q53. Use the words “quickly”, “carefully”, and “happily” in sentences.</b><textarea name="q53" rows="3"></textarea></div>
+    <div class="question"><b>Q54. Correct the sentence: “he go to school every day.”</b><textarea name="q54" rows="2"></textarea></div>
+    <div class="question"><b>Q55. Rewrite this sentence using richer vocabulary: “The cat is nice.”</b><textarea name="q55" rows="3"></textarea></div>
+    <button type="button" class="submitBtn" onclick="gradeTest('English')">Submit English Test</button>
+  </form>
+  <div id="resultEnglish"></div>
+</div>
+
+<!-- ===== GEOGRAPHY ===== -->
+<div id="Geography" class="tabcontent">
+  <div id="timerGeography">Time Remaining: 120m 0s</div>
+  <form id="formGeography">
+    <div id="mcqGeography"></div>
+    <h2>Descriptive Questions</h2>
+    <div class="question"><b>Q51. Name three countries in Africa and their capitals.</b><textarea name="q51" rows="3"></textarea></div>
+    <div class="question"><b>Q52. Explain the difference between a peninsula and an isthmus.</b><textarea name="q52" rows="3"></textarea></div>
+    <div class="question"><b>Q53. Identify the main rivers of India.</b><textarea name="q53" rows="3"></textarea></div>
+    <div class="question"><b>Q54. Name any two deserts and where they are located.</b><textarea name="q54" rows="3"></textarea></div>
+    <div class="question"><b>Q55. Describe why mountains are important for ecosystems.</b><textarea name="q55" rows="3"></textarea></div>
+    <button type="button" class="submitBtn" onclick="gradeTest('Geography')">Submit Geography Test</button>
+  </form>
+  <div id="resultGeography"></div>
+</div>
+
+<!-- ===== ART ===== -->
+<div id="Art" class="tabcontent">
+  <h2>Art Drawing Test</h2>
+  <div id="artTools">
+    <label>Brush Color: <input type="color" id="brushColor" value="#000000"></label>
+    <label>Line Width: 
+      <select id="lineWidth">
+        <option value="2">Thin</option>
+        <option value="5">Medium</option>
+        <option value="10">Thick</option>
+      </select>
+    </label>
+    <label>Line Style: 
+      <select id="lineStyle">
+        <option value="solid">Solid</option>
+        <option value="dotted">Dotted</option>
+      </select>
+    </label>
+    <button onclick="eraseToggle()">Eraser</button>
+    <button onclick="clearCanvas()">Clear</button>
+    <button onclick="saveCanvas()">Save Drawing</button>
+  </div>
+  <canvas id="artCanvas"></canvas>
+  <div id="artMessage"></div>
+</div>
+
+<script>
+// ===== TAB SWITCH =====
+function openTab(evt, subject) {
+  let tabcontent = document.getElementsByClassName("tabcontent");
+  for (let i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
+  let tablinks = document.getElementsByClassName("tablinks");
+  for (let i = 0; i < tablinks.length; i++) tablinks[i].className = tablinks[i].className.replace(" active", "");
+  document.getElementById(subject).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+
+// ===== TIMERS =====
+const timers = { Math: 120*60, Science: 120*60, English: 120*60, Geography: 120*60 };
+const intervals = {};
+function startTimer(sub) {
+  if (intervals[sub]) clearInterval(intervals[sub]);
+  intervals[sub] = setInterval(() => {
+    let t = timers[sub];
+    let min = Math.floor(t / 60), sec = t % 60;
+    document.getElementById("timer" + sub).textContent = "Time Remaining: " + min + "m " + sec + "s";
+    timers[sub]--;
+    if (timers[sub] < 0) { clearInterval(intervals[sub]); alert(sub + " time is up! Submitting."); gradeTest(sub); }
+  }, 1000);
+}
+// Start timers for all subjects
+startTimer("Math"); startTimer("Science"); startTimer("English"); startTimer("Geography");
+
+// ===== MCQ DATA =====
+const mathQuestions = [
+  { q: "What is 348 ÷ 12?", opts: ["28", "29", "30", "31"], correct: 2 },
+  { q: "7 × (9 + 6) − 28 = ?", opts: ["53", "63", "77", "91"], correct: 1 },
+  { q: "Which fraction is the largest?", opts: ["3/8", "4/9", "5/12", "2/5"], correct: 0 },
+  { q: "LCM of 6, 8, and 10 is:", opts: ["40", "60", "120", "180"], correct: 2 },
+  { q: "2.75 + 0.95 =", opts: ["2.80", "3.50", "3.70", "3.85"], correct: 3 },
+  { q: "If 7 boxes contain 84 stickers, how many in 12 boxes?", opts: ["120", "132", "144", "156"], correct: 2 },
+  { q: "4 km 350 m = how many m?", opts: ["4050", "4350", "435", "4530"], correct: 1 },
+  { q: "Which is a prime number?", opts: ["21", "27", "31", "39"], correct: 2 },
+  { q: "Three-fifths of 80 = ?", opts: ["32", "36", "40", "48"], correct: 1 },
+  { q: "A shop sold 248 apples and 167 apples the next day. Total?", opts: ["415", "425", "435", "445"], correct: 0 },
+  { q: "Area of rectangle 13 cm × 7 cm =", opts: ["70", "77", "84", "91"], correct: 1 },
+  { q: "Rope is 9.6 m, cut into 8 equal parts. Each part is:", opts: ["1.2 m", "0.8 m", "1.0 m", "1.6 m"], correct: 0 },
+  { q: "Roman numeral for 94?", opts: ["XCIV", "LXIV", "XCIX", "IXIV"], correct: 0 },
+  { q: "Perimeter of square side 12 cm =", opts: ["48 cm", "36 cm", "60 cm", "24 cm"], correct: 0 },
+  { q: "180 − 47 + 29 = ?", opts: ["162", "172", "152", "190"], correct: 0 },
+  { q: "A factor of 64 that is NOT 12:", opts: ["6", "8", "16", "12"], correct: 3 },
+  { q: "40% of 250 = ?", opts: ["80", "100", "90", "120"], correct: 0 },
+  { q: "Clock shows 2:45 PM; 2h 20min later time is:", opts: ["5:05", "5:15", "5:00", "4:55"], correct: 1 },
+  { q: "12² = ?", opts: ["144", "122", "164", "134"], correct: 0 },
+  { q: "Sum of first 6 even numbers:", opts: ["36", "42", "48", "54"], correct: 2 },
+  { q: "1.4 × 100 = ?", opts: ["140", "14", "1.4", "1400"], correct: 0 },
+  { q: "Difference between 9999 and 1000:", opts: ["8999", "8998", "9000", "8997"], correct: 0 },
+  { q: "Simplify 7/9 − 2/3 =", opts: ["1/9", "2/9", "4/9", "5/9"], correct: 1 },
+  { q: "3 h 40 min = ?", opts: ["220 min", "200 min", "240 min", "180 min"], correct: 0 },
+  { q: "Triangle angles: 40° + 70° + ____ = 180°. Third angle:", opts: ["70°", "80°", "90°", "100°"], correct: 1 },
+  { q: "0.625 as fraction = ?", opts: ["5/8", "3/4", "7/8", "2/3"], correct: 0 },
+  { q: "Lines of symmetry in square:", opts: ["2", "4", "3", "5"], correct: 1 },
+  { q: "400% of 25 = ?", opts: ["100", "125", "75", "150"], correct: 0 },
+  { q: "45 × 19 = ?", opts: ["855", "765", "780", "930"], correct: 0 },
+  { q: "105 ÷ 0.5 = ?", opts: ["210", "52.5", "105", "250"], correct: 0 },
+  { q: "234 markers, 18 per pack. How many packs?", opts: ["13", "12", "15", "14"], correct: 0 },
+  { q: "4¹ × 4² = ?", opts: ["4³", "4⁴", "4⁵", "16²"], correct: 0 },
+  { q: "2a + 3b for a=7, b=3 = ?", opts: ["27", "23", "29", "17"], correct: 1 },
+  { q: "Which decimal is smallest?", opts: ["0.206", "0.602", "0.62", "0.620"], correct: 0 },
+  { q: "Marbles: 40 blue + 55 red + 35 green = ?", opts: ["130", "135", "140", "125"], correct: 1 },
+  { q: "Perimeter of triangle (6, 11, 9) cm = ?", opts: ["26", "24", "28", "30"], correct: 0 },
+  { q: "22 × 22 = ?", opts: ["484", "444", "524", "544"], correct: 0 },
+  { q: "Composite number:", opts: ["21", "19", "17", "23"], correct: 0 },
+  { q: "3.5 L in mL = ?", opts: ["3500", "350", "35", "0.35"], correct: 0 },
+  { q: "Mode of {4,5,5,2,4,5,3} = ?", opts: ["4", "5", "2", "3"], correct: 1 },
+  { q: "5.6 − 2.48 = ?", opts: ["3.12", "3.02", "3.22", "3.32"], correct: 1 },
+  { q: "Sequence: 3,7,11,15,... next =", opts: ["19", "17", "20", "18"], correct: 1 },
+  { q: "2/5 of 95 = ?", opts: ["38", "36", "34", "40"], correct: 0 },
+  { q: "Which forms perpendicular lines?", opts: ["Notebook corners", "Roof edges", "Train tracks", "River banks"], correct: 0 },
+  { q: "Average of 8,12,15,5 =", opts: ["10.5","10","11","9"], correct: 0 },
+  { q: "180° is a:", opts: ["Straight angle","Right angle","Acute angle","Obtuse angle"], correct: 0 },
+  { q: "Estimate 59 + 42 ≈", opts: ["100","110","120","90"], correct: 0 },
+  { q: "6³ = ?", opts: ["216","36","18","729"], correct: 0 },
+  { q: "Probability of getting heads in a coin toss:", opts: ["1/2","1/3","1/4","1/5"], correct: 0 },
+  { q: "3/8 + 1/5 =", opts: ["19/40","11/40","23/40","31/40"], correct: 0 }
+];
+
+const scienceQuestions = [
+  { q:"Light travels faster than sound. What is seen first?", opts:["Lightning","Thunder","Both together","Neither"], correct: 0 },
+  { q:"Which organelle in a plant makes food?", opts:["Mitochondria","Chloroplast","Nucleus","Ribosome"], correct: 1 },
+  { q:"Which is a simple machine?", opts:["Wheel & axle","Lever","Pulley","All of them"], correct: 3 },
+  { q:"Evaporation changes water from:", opts:["Liquid to gas","Gas to liquid","Solid to liquid","Solid to gas"], correct: 0 },
+  { q:"Condensation is:", opts:["Gas to liquid","Liquid to gas","Solid to gas","Liquid to solid"], correct: 0 },
+  { q:"Which is a renewable energy source?", opts:["Coal","Petrol","Solar","Natural Gas"], correct: 2 },
+  { q:"Which gas do humans inhale?", opts:["Carbon Dioxide","Oxygen","Nitrogen","Helium"], correct: 1 },
+  { q:"Which part of body pumps blood?", opts:["Lungs","Brain","Heart","Stomach"], correct: 2 },
+  { q:"Water lily leaves are large and flat to:", opts:["Float and get sunlight","Absorb water","Store food","All"], correct: 0 },
+  { q:"Earth spinning on its axis causes:", opts:["Seasons","Day and night","Tides","Eclipses"], correct: 1 },
+  { q:"Earth revolving around Sun causes:", opts:["Day & night","Seasons","Year","Month"], correct: 1 },
+  { q:"If earthworms disappeared, soil would become:", opts:["Less fertile","More fertile","Sandy","Waterlogged"], correct: 0 },
+  { q:"Metal feels colder than wood because:", opts:["It is colder","It conducts heat away faster","It is wet","It is heavier"], correct: 1 },
+  { q:"Plants lose water through small pores called:", opts:["Roots","Stomata","Stem","Flowers"], correct: 1 },
+  { q:"Which is NOT a state of matter?", opts:["Solid","Gas","Vapor","Energy"], correct: 3 },
+  { q:"Water cycle includes which processes?", opts:["Evaporation","Condensation","Precipitation","All"], correct: 3 },
+  { q:"Insects breathe through:", opts:["Lungs","Gills","Spiracles","Skin"], correct: 2 },
+  { q:"Friction always:", opts:["Helps motion","Opposes motion","Creates cold","Does nothing"], correct: 1 },
+  { q:"Which part of plant helps in support?", opts:["Leaf","Stem","Root","Flower"], correct: 1 },
+  { q:"Which is a magnetic metal?", opts:["Iron","Gold","Copper","Aluminum"], correct: 0 },
+  { q:"Sound is produced by:", opts:["Light","Vibrations","Heat","Electricity"], correct: 1 },
+  { q:"Which living being helps in soil aeration?", opts:["Beetle","Earthworm","Frog","Ant"], correct: 1 },
+  { q:"Which is the largest organ in human body?", opts:["Heart","Lung","Skin","Liver"], correct: 2 },
+  { q:"The energy from food is stored as:", opts:["Kinetic","Chemical","Electric","Sound"], correct: 1 },
+  { q:"Which of these is biodegradable?", opts:["Plastic","Glass","Paper","Metal"], correct: 2 },
+  { q:"Which machine helps lift heavy weight easily?", opts:["Lever","Wheel","Pulley","Ramp"], correct: 2 },
+  { q:"Change of liquid to solid is:", opts:["Evaporation","Melting","Freezing","Condensation"], correct: 2 },
+  { q:"Plants make food using:", opts:["Sunlight and CO₂","Water alone","Soil","Wind"], correct: 0 },
+  { q:"Which gas do plants absorb at night?", opts:["Oxygen","CO₂","Nitrogen","Water vapor"], correct: 0 },
+  { q:"Which is a force that opposes motion?", opts:["Push","Pull","Friction","Lift"], correct: 2 },
+  { q:"Which part of plant absorbs water from soil?", opts:["Leaf","Root","Stem","Flower"], correct: 1 },
+  { q:"Which process cools the skin when we sweat?", opts:["Evaporation","Freezing","Melting","Condensation"], correct: 0 },
+  { q:"Large scale water falls from clouds is called:", opts:["Evaporation","Condensation","Precipitation","Collection"], correct: 2 },
+  { q:"Which is the process of water collecting in rivers?", opts:["Evaporation","Condensation","Collection","Precipitation"], correct: 2 },
+  { q:"Which gas is released during photosynthesis?", opts:["CO₂","O₂","N₂","H₂"], correct: 1 },
+  { q:"Which body process uses simple machines?", opts:["Eating","Walking","Breathing","Talking"], correct: 1 },
+  { q:"Steam (water vapor) forms when:", opts:["Water is heated","Water is cooled","Water is frozen","Water is dried"], correct: 0 },
+  { q:"Which of these is living?", opts:["Stone","Tree","Rock","Plastic"], correct: 1 },
+  { q:"Which is NOT living?", opts:["Fish","Bird","Cloud","Insect"], correct: 2 },
+  { q:"Which is a non-renewable resource?", opts:["Wind","Solar","Coal","Water"], correct: 2 },
+  { q:"Which part of the plant helps in food transport?", opts:["Leaf","Root","Stem","Flower"], correct: 2 },
+  { q:"Which machine can multiply force?", opts:["Lever","Wedge","Screw","All"], correct: 0 },
+  { q:"Which of these statements is correct about conductors?", opts:["They do not conduct heat","They conduct heat","They block light","They block sound"], correct: 1 },
+  { q:"Which is an example of renewable energy?", opts:["Coal","Petrol","Solar","Natural Gas"], correct: 2 },
+  { q:"Which animal helps in decomposition in soil?", opts:["Lion","Earthworm","Tiger","Elephant"], correct: 1 },
+  { q:"Which process describes water turning into vapor?", opts:["Condensation","Evaporation","Freezing","Melting"], correct: 1 },
+  { q:"Which is a non-living thing that affects weather?", opts:["Tree","Mountain","Bird","Grass"], correct: 1 },
+  { q:"Which force slows down sliding objects?", opts:["Gravity","Magnetism","Friction","Electricity"], correct: 2 },
+  { q:"Which part of the water cycle stores water underground?", opts:["Clouds","Rivers","Groundwater","Ocean"], correct: 2 }
+];
+
+const englishQuestions = [
+  { q:"Choose the correct plural of 'child'.", opts:["Childs","Children","Childes","Childrens"], correct: 1 },
+  { q:"Which is a synonym of 'brave'?", opts:["Cowardly","Bold","Shy","Quiet"], correct: 1 },
+  { q:"Antonym of 'ancient' is:", opts:["Old","Modern","Past","Elder"], correct: 1 },
+  { q:"Pick the correct sentence:", opts:["he is happy.","He is happy.","He Is Happy","he Is happy"], correct: 1 },
+  { q:"Which part of speech is 'quickly' in 'He ran quickly'?", opts:["Noun","Adverb","Verb","Adjective"], correct: 1 },
+  { q:"Opposite of 'generous' is:", opts:["Stingy","Kind","Polite","Smart"], correct: 0 },
+  { q:"Correct spelling:", opts:["Begining","Beginning","Begginning","Begining"], correct: 1 },
+  { q:"Identify the verb: She sings a song.", opts:["She","Sings","A","Song"], correct: 1 },
+  { q:"Correct article: ___ apple fell.", opts:["A","An","The","No article"], correct: 1 },
+  { q:"Which is a proper noun?", opts:["city","dog","India","ball"], correct: 2 },
+  { q:"Choose the correct past tense of 'write'.", opts:["Write","Wrote","Written","Writes"], correct: 1 },
+  { q:"Which is a conjunction in: 'I like tea and coffee'.", opts:["Tea","And","Coffee","Like"], correct: 1 },
+  { q:"Choose the correct possessive: This is ___ book.", opts:["I","Me","My","Mine"], correct: 2 },
+  { q:"Which is an adjective in 'The tall building'? ", opts:["The","tall","building","is"], correct: 1 },
+  { q:"Correct homophone: 'See' or ___ ?", opts:["Sea","See","Seat","Sew"], correct: 0 },
+  { q:"Choose correct preposition: The cat is ___ the box.", opts:["in","on","under","by"], correct: 0 },
+  { q:"Which sentence is negative?", opts:["I do my homework.","I do not do my homework.","I will do my homework.","I did my homework."], correct: 1 },
+  { q:"Pick antonym of 'strong'.", opts:["Weak","Tall","Smart","Brave"], correct: 0 },
+  { q:"Plural of 'leaf' is:", opts:["Leafs","Leaves","Leavs","Leafes"], correct: 1 },
+  { q:"‘They are coming’ – identify verb type:", opts:["Simple present","Present continuous","Simple past","Present perfect"], correct: 1 },
+  { q:"Synonym of 'silent'", opts:["Noisy","Quiet","Fast","Cold"], correct: 1 },
+  { q:"Correct spelling of 'necessary'", opts:["Necessary","Neccessary","Necassary","Necessary"], correct: 0 },
+  { q:"Sentence with correct order:", opts:["She always is punctual.","Always she is punctual.","She is always punctual.","She punctual is always."], correct: 2 },
+  { q:"Correct comparative of 'tall'", opts:["more tall","taller","tallest","tallier"], correct: 1 },
+  { q:"Adverb in: 'He spoke softly'.", opts:["He","Spoke","Softly","None"], correct: 2 },
+  { q:"Choose article: ___ hour passed quietly.", opts:["A","An","The","No"], correct: 1 },
+  { q:"Which is a pronoun?", opts:["Run","She","Table","Blue"], correct: 1 },
+  { q:"Which is a noun?", opts:["Running","Good","Happiness","Quickly"], correct: 2 },
+  { q:"Which is past tense of 'go'?", opts:["Go","Went","Going","Goes"], correct: 1 },
+  { q:"Which is future tense?", opts:["I walk","I walked","I will walk","I am walking"], correct: 2 },
+  { q:"Choose correct wording: She ___ happy.", opts:["is","are","am","be"], correct: 0 },
+  { q:"Plural of ‘tomato’ is:", opts:["Tomatos","Tomatoes","Tomates","Tomatoss"], correct: 1 },
+  { q:"Correct homophone: Their, They're or There?", opts:["Their","They're","There","Which"], correct: 0 },
+  { q:"Which shows possession?", opts:["Its","It's","It","Is"], correct: 0 },
+  { q:"Correct sentence:", opts:["Him is my friend.","He is my friend.","Him are my friend.","He are my friend."], correct: 1 },
+  { q:"Antonym of 'happy' is:", opts:["Joyful","Sad","Brave","Weak"], correct: 1 },
+  { q:"Use of 'because': 'I stayed because...'", opts:["and","but","or","because"], correct: 3 },
+  { q:"Which word is an adjective in 'bright sun'?", opts:["bright","sun","is","the"], correct: 0 },
+  { q:"Which is a conjunction in 'I want tea or coffee'?", opts:["I","want","or","coffee"], correct: 2 },
+  { q:"Pick the correct preposition: She lives ___ London.", opts:["on","in","at","by"], correct: 1 },
+  { q:"Plural of 'fish' when many species are meant?", opts:["Fishes","Fish","Fisheses","Fissh"], correct: 0 },
+  { q:"What is the synonym of 'quick'?", opts:["Slow","Fast","Lazy","Smart"], correct: 1 },
+  { q:"Correct spelling of 'beginning'", opts:["Begining","Beginning","Begininng","Beginnig"], correct: 1 },
+  { q:"Which is a noun in: 'The dog barked loudly'?", opts:["The","Dog","Loudly","Barked"], correct: 1 },
+  { q:"Correct article in: '___ umbrella is red'", opts:["A","An","The","None"], correct: 1 },
+  { q:"Which is a pronoun: 'They are going'?", opts:["They","Are","Going","None"], correct: 0 },
+  { q:"Which shows comparison: 'My bag is bigger than yours'", opts:["bigger","bigger than","is bigger","than"], correct: 1 },
+  { q:"Which is a verb in: 'He runs fast'", opts:["He","Runs","Fast","None"], correct: 1 },
+  { q:"Antonym of 'small' is:", opts:["Tiny","Big","Short","Little"], correct: 1 }
+];
+
+const geoQuestions = [
+  { q:"Capital of Australia?", opts:["Sydney","Melbourne","Canberra","Perth"], correct: 2 },
+  { q:"Largest continent by area?", opts:["Asia","Africa","Europe","Antarctica"], correct: 0 },
+  { q:"Longest river in the world?", opts:["Amazon","Nile","Yangtze","Mississippi"], correct: 1 },
+  { q:"Highest mountain in the world?", opts:["Mount Everest","K2","Kangchenjunga","Makalu"], correct: 0 },
+  { q:"Capital of Japan?", opts:["Kyoto","Osaka","Tokyo","Hokkaido"], correct: 2 },
+  { q:"Desert in India?", opts:["Sahara","Thar","Gobi","Kalahari"], correct: 1 },
+  { q:"Largest ocean?", opts:["Atlantic","Pacific","Indian","Arctic"], correct: 1 },
+  { q:"Continent with most countries?", opts:["Africa","Asia","Europe","America"], correct: 0 },
+  { q:"Country called Land of the Rising Sun?", opts:["China","Japan","Thailand","Korea"], correct: 1 },
+  { q:"Capital of Canada?", opts:["Ottawa","Toronto","Montreal","Vancouver"], correct: 0 },
+  { q:"Which country has the Great Wall?", opts:["India","China","Japan","USA"], correct: 1 },
+  { q:"Smallest continent by land area?", opts:["Europe","Australia","Antarctica","Asia"], correct: 1 },
+  { q:"Largest desert in the world?", opts:["Sahara","Kalahari","Gobi","Thar"], correct: 0 },
+  { q:"Country in South America?", opts:["Brazil","Spain","India","China"], correct: 0 },
+  { q:"Which is a peninsula?", opts:["India","Nepal","China","Egypt"], correct: 0 },
+  { q:"Which is an isthmus?", opts:["Panama","India","Egypt","Brazil"], correct: 0 },
+  { q:"Capital of France?", opts:["Berlin","Paris","Madrid","Rome"], correct: 1 },
+  { q:"Mountain range in India?", opts:["Himalayas","Alps","Andes","Rockies"], correct: 0 },
+  { q:"River flowing through Egypt?", opts:["Nile","Amazon","Yangtze","Ganges"], correct: 0 },
+  { q:"Landlocked country?", opts:["Nepal","India","USA","Japan"], correct: 0 },
+  { q:"Largest country by area?", opts:["USA","Russia","Canada","China"], correct: 1 },
+  { q:"Smallest country by area?", opts:["Vatican City","Monaco","Malta","Liechtenstein"], correct: 0 },
+  { q:"Longest river in India?", opts:["Ganga","Yamuna","Godavari","Brahmaputra"], correct: 0 },
+  { q:"Largest lake in Africa?", opts:["Lake Victoria","Lake Tanganyika","Lake Malawi","Lake Chad"], correct: 0 },
+  { q:"Which ocean touches Africa on its east coast?", opts:["Pacific","Atlantic","Indian","Arctic"], correct: 2 },
+  { q:"Which country has most islands?", opts:["Indonesia","Philippines","Japan","Greece"], correct: 0 },
+  { q:"Which desert is cold?", opts:["Gobi","Sahara","Thar","Kalahari"], correct: 0 },
+  { q:"Which European country is landlocked?", opts:["Hungary","Portugal","Italy","Spain"], correct: 0 },
+  { q:"Capital of Egypt?", opts:["Cairo","Alexandria","Luxor","Giza"], correct: 0 },
+  { q:"Which river forms a delta in India?", opts:["Ganga","Godavari","Yamuna","Krishna"], correct: 0 },
+  { q:"Largest bay in India?", opts:["Bay of Bengal","Arabian Sea","Laccadive Sea","Andaman Sea"], correct: 0 },
+  { q:"Tallest waterfall in the world?", opts:["Angel Falls","Niagara Falls","Victoria Falls","Yosemite Falls"], correct: 0 },
+  { q:"Which is a major mountain range in South America?", opts:["Andes","Himalayas","Rockies","Alps"], correct: 0 },
+  { q:"Which North American ocean lies to the west of USA?", opts:["Atlantic","Pacific","Indian","Arctic"], correct: 1 },
+  { q:"Which African country lies on the equator?", opts:["Kenya","Egypt","Libya","Morocco"], correct: 0 },
+  { q:"Which is the smallest independent country in Africa?", opts:["Seychelles","Lesotho","Gambia","Djibouti"], correct: 0 },
+  { q:"Which mountain is in Africa?", opts:["Kilimanjaro","Everest","K2","Mont Blanc"], correct: 0 },
+  { q:"Which island nation is in Asia?", opts:["Sri Lanka","Maldives","Fiji","Iceland"], correct: 1 },
+  { q:"Which rainforest is among the largest in the world?", opts:["Amazon","Rainforest of Australia","Congo","Southeast Asia"], correct: 0 },
+  { q:"Which latitude is 0°?", opts:["Equator","Arctic Circle","Tropic of Cancer","Prime Meridian"], correct: 0 },
+  { q:"Which longitude is 0°?", opts:["Prime Meridian","180°","90°","45°"], correct: 0 },
+  { q:"Which landform is an elevated flat area?", opts:["Plain","Plateau","Valley","Hill"], correct: 1 },
+  { q:"Which flat landform is generally at low elevation and often fertile?", opts:["Plain","Desert","Plateau","Mountain"], correct: 0 },
+  { q:"Which country lies in both Northern and Eastern Hemispheres?", opts:["India","Brazil","Australia","USA"], correct: 0 },
+  { q:"Which country is entirely in the Southern Hemisphere?", opts:["Australia","India","Egypt","USA"], correct: 0 },
+  { q:"Which continent has many plateaus?", opts:["Africa","Europe","Asia","North America"], correct: 0 },
+  { q:"Which plateau is called the 'Roof of the World'?", opts:["Tibetan Plateau","Deccan Plateau","Colorado Plateau","Altiplano"], correct: 0 },
+  { q:"Which plain is part of the Ganges river basin in India?", opts:["Indo-Gangetic Plain","Thar Plain","Coastal Plain","Rainforest Plain"], correct: 0 },
+  { q:"Which country is near 20° N latitude and 77° E longitude?", opts:["India","Egypt","China","Brazil"], correct: 0 }
+];
+
+
+// ===== RENDER MCQ for each subject =====
+function renderMCQs(sub, questions) {
+  const container = document.getElementById("mcq" + sub);
+  questions.forEach((item, idx) => {
+    const qnum = idx + 1;
+    const qDiv = document.createElement("div");
+    qDiv.className = "question";
+    let html = `<b>Q${qnum}. ${item.q}</b><br>`;
+    item.opts.forEach((opt, i) => {
+      html += `<label><input type="radio" name="${sub}_q${qnum}" value="${i}"> ${opt}</label>`;
+    });
+    qDiv.innerHTML = html;
+    container.appendChild(qDiv);
+  });
+}
+
+renderMCQs("Math", mathQuestions);
+renderMCQs("Science", scienceQuestions);
+renderMCQs("English", englishQuestions);
+renderMCQs("Geography", geoQuestions);
+
+// ===== KEYWORDS for descriptive scoring =====
+const keywords = {
+  Math: [
+    ["9","division"],        // Q51
+    ["6"],                   // Q52
+    ["11/15","fraction"],    // Q53
+    ["1.2","equal"],         // Q54
+    ["48","perimeter"]       // Q55
+  ],
+  Science: [
+    ["lightning","sound"],           // Q51
+    ["sunlight","shade","chlorophyll"], // Q52
+    ["wheel","lever","pulley"],      // Q53
+    ["evaporation","condensation","precipitation"], // Q54
+    ["rotation","revolution","seasons"] // Q55
+  ],
+  English: [
+    ["favorite","school","day"],      // Q51
+    ["noun","pronoun","example"],    // Q52
+    ["quickly","carefully","happily"],// Q53
+    ["she","go","every","day"],       // Q54
+    ["cat","nice","friendly","cute"]  // Q55
+  ],
+  Geography: [
+    ["africa","capital","countries"],  // Q51
+    ["peninsula","isthmus"],           // Q52
+    ["rivers","india"],                 // Q53
+    ["deserts","locations"],            // Q54
+    ["mountains","ecosystem","importance"] // Q55
+  ]
+};
+
+// ===== GRADE FUNCTION =====
+function gradeTest(sub) {
+  clearInterval(intervals[sub]);
+  // MCQ score
+  let mcqScore = 0;
+  const qArr = (sub === "Math" ? mathQuestions : sub === "Science" ? scienceQuestions :
+                sub === "English" ? englishQuestions : geoQuestions);
+  qArr.forEach((item, idx) => {
+    const qnum = idx + 1;
+    const name = sub + "_q" + qnum;
+    const radios = document.getElementsByName(name);
+    let selected = null;
+    for (let r of radios) {
+      if (r.checked) selected = parseInt(r.value);
+    }
+    radios.forEach((r, i) => {
+      const lbl = r.parentNode;
+      if (i === item.correct) lbl.classList.add("correct");
+      else if (selected === i && i !== item.correct) lbl.classList.add("incorrect");
+    });
+    if (selected === item.correct) mcqScore++;
+  });
+
+  // Descriptive score
+  let descScore = 0;
+  const kw = keywords[sub];
+  for (let j = 0; j < kw.length; j++) {
+    const ta = document.querySelector(`#form${sub} textarea[name="q${j+51}"]`);
+    const ans = (ta.value || "").toLowerCase();
+    if (kw[j].every(w => ans.includes(w))) descScore += 2;
+  }
+
+  const total = mcqScore + descScore;
+  document.getElementById("result" + sub).innerHTML =
+    `MCQ Score: <strong>${mcqScore}</strong> / 50<br>` +
+    `Descriptive Score: <strong>${descScore}</strong> / 10<br>` +
+    `<strong>Total Score: ${total} / 60</strong>`;
+}
+
+</script>
+
+<!-- ===== ART SCRIPT ===== -->
+<script>
+const canvas = document.getElementById("artCanvas");
+const ctx = canvas.getContext("2d");
+let drawing = false;
+let erasing = false;
+
+canvas.addEventListener("mousedown", e => {
+  drawing = true;
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX, e.offsetY);
+});
+canvas.addEventListener("mousemove", e => {
+  if (!drawing) return;
+  ctx.strokeStyle = erasing ? "#ffffff" : document.getElementById("brushColor").value;
+  ctx.lineWidth = parseInt(document.getElementById("lineWidth").value, 10);
+  if (document.getElementById("lineStyle").value === "dotted") {
+    ctx.setLineDash([5, 5]);
+  } else {
+    ctx.setLineDash([]);
+  }
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+});
+canvas.addEventListener("mouseup", e => { drawing = false; ctx.closePath(); });
+canvas.addEventListener("mouseout", e => { drawing = false; ctx.closePath(); });
+
+canvas.addEventListener("touchstart", e => {
+  e.preventDefault();
+  drawing = true;
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  ctx.beginPath();
+  ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
+});
+canvas.addEventListener("touchmove", e => {
+  e.preventDefault();
+  if (!drawing) return;
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  ctx.strokeStyle = erasing ? "#ffffff" : document.getElementById("brushColor").value;
+  ctx.lineWidth = parseInt(document.getElementById("lineWidth").value, 10);
+  if (document.getElementById("lineStyle").value === "dotted") {
+    ctx.setLineDash([5, 5]);
+  } else {
+    ctx.setLineDash([]);
+  }
+  ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+  ctx.stroke();
+});
+canvas.addEventListener("touchend", e => { drawing = false; ctx.closePath(); });
+
+function eraseToggle() {
+  erasing = !erasing;
+}
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+function saveCanvas() {
+  const link = document.createElement("a");
+  link.download = `art_grade4_${Date.now()}.png`;
+  link.href = canvas.toDataURL();
+  link.click();
+  document.getElementById("artMessage").textContent = "Drawing saved!";
+}
+</script>
+
+</body>
+</html>
